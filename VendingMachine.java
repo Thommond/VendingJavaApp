@@ -83,7 +83,7 @@ public class VendingMachine {
     }
 
     public boolean exit() {
-        System.out.print("Goodbye, Enjoy!");
+        System.out.println("Goodbye, Enjoy!");
         return true;
     }
 

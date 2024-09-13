@@ -21,28 +21,64 @@ public class VendingMachine {
         this.gummies =  new VendingItem("Gummies", 2.50);
     }
 
-    public String displayItems() {
-        return "";
+    public void displayItems() {
+        System.out.println("Available Items \n");
+        System.out.println("1. Chips - $"+this.chips.getItemPrice()+"\n");
+        System.out.println("2. Cookies - $"+this.cookies.getItemPrice()+"\n");
+        System.out.println("3. Candy Bar - $"+this.candyBar.getItemPrice()+"\n");
+        System.out.println("4. Gummies - $"+this.gummies.getItemPrice()+"\n");
     }
 
-    public void purchaseItem() {
-        
+    public void purchaseItem(String usersChoice) {
+
+        VendingItem itemSelected;
+
+        // Check if the users selection matches an item 
+        switch (usersChoice.toLowerCase()) {
+            case "1":
+                itemSelected = this.chips;
+                break;
+            case "2":
+                itemSelected = this.cookies;
+                break;
+            case "3":
+                itemSelected = this.candyBar;
+                break;
+            case "4":
+                itemSelected = this.gummies;
+                break;
+            default:
+                // If not let them know
+                System.out.println("Invalid, no item selected. Try again!");
+                break;
+        }
+
+        // Make sure an item is selected
+        if (itemSelected != null) {
+            // Check if the balance is sufficient
+            if (this.balance >= itemSelected.getItemPrice()) {
+                this.balance -= itemSelected.getItemPrice();
+                System.out.println("Purchased " + itemSelected.getItemName() + " for $" + itemSelected.getItemPrice() + ". Remaining balance: $" + this.balance);
+            } else {
+                // Inform the user of funds
+                System.out.println("Insufficient balance. Please add more money.");
+                } 
+        }   
+
     }
 
     // Method to check the current balance
-    public String checkBalance() {
-        return "Current balance: $" + this.balance;
+    public double getBalance() {
+        return this.balance;
     }
 
-    public void addMoney() {
-        System.out.print("Enter amount to add: $");
-        // double amount = scanner.nextDouble();
-        // scanner.nextLine(); // Consume newline
-
-        // Update the vending machine's balance
-        // this.balance = amount;
-        // thomsVendingMachine.setCurrentBalance(currentBalance + amount);
-        // System.out.println("Added $" + amount + " to your balance.");
+    public void addMoney(double amount) {
+        if (amount >= 0.0) {
+            this.balance += amount;
+            System.out.println("Added $" + amount + " to balance. Current balance $"+ this.balance);
+        } else {
+            System.out.println("Invalid amount.");
+        }
     }
 
     public void exit() {

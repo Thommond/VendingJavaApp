@@ -6,9 +6,10 @@ public class VendingMachineApp {
        exit the instance of the VendingMachine. 
      */
 
-   // We don't need arguments as we utilize the VendingItem class
-   // inside the VendingMachine class.
-   VendingMachine thomsVendingMachine = new VendingMachine();
+   public static void main(String[] args) {
+    // We don't need arguments as we utilize the VendingItem class
+    // inside the VendingMachine class.
+    VendingMachine thomsVendingMachine = new VendingMachine();
 
    
 

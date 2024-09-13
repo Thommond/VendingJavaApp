@@ -29,22 +29,22 @@ public class VendingMachine {
         System.out.println("4. Gummies - $"+this.gummies.getItemPrice()+"\n");
     }
 
-    public void purchaseItem(String usersChoice) {
+    public void purchaseItem(int usersChoice) {
 
-        VendingItem itemSelected;
+        VendingItem itemSelected = null;
 
         // Check if the users selection matches an item 
-        switch (usersChoice.toLowerCase()) {
-            case "1":
+        switch (usersChoice) {
+            case 1:
                 itemSelected = this.chips;
                 break;
-            case "2":
+            case 2:
                 itemSelected = this.cookies;
                 break;
-            case "3":
+            case 3:
                 itemSelected = this.candyBar;
                 break;
-            case "4":
+            case 4:
                 itemSelected = this.gummies;
                 break;
             default:
@@ -73,16 +73,18 @@ public class VendingMachine {
     }
 
     public void addMoney(double amount) {
-        if (amount >= 0.0) {
+        if (amount >= 0.0 && amount <= 10.0) {
             this.balance += amount;
             System.out.println("Added $" + amount + " to balance. Current balance $"+ this.balance);
         } else {
-            System.out.println("Invalid amount.");
+            // You can add as much as 10 at a time.
+            System.out.println("Invalid amount, enter a positive number lower then 10.");
         }
     }
 
-    public void exit() {
+    public boolean exit() {
         System.out.print("Goodbye, Enjoy!");
+        return true;
     }
 
 }

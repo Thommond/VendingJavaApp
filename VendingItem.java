@@ -6,7 +6,6 @@ public class VendingItem {
        machine items to give more options in the VendingMachine
      */
 
-
     private String itemName;
     private double itemPrice;
 

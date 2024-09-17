@@ -12,10 +12,17 @@ public class VendingMachineApp {
     // inside the VendingMachine class.
     VendingMachine thomsVendingMachine = new VendingMachine();
 
+    // Constuctor example not in use. 
+    VendingMachine example2 = new VendingMachine(
+      new VendingItem("Popcorn", 1.50),
+      new VendingItem("Tart Sweets", 1.75),
+      new VendingItem("Rice Treats", 2.00),
+      new VendingItem("Trail mix", 2.25)
+    );
+
     // Variables for menu options and loop
     boolean exit = false;
     int menuOption;
-    double moneyToAdd;
 
     Scanner scnr = new Scanner(System.in);
 

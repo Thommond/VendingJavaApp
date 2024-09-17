@@ -7,27 +7,37 @@ public class VendingMachine {
        class.
     */
 
-    private VendingItem chips;
-    private VendingItem cookies;
-    private VendingItem candyBar;
-    private VendingItem gummies;
+    private VendingItem item1;
+    private VendingItem item2;
+    private VendingItem item3;
+    private VendingItem item4;
 
     private double balance;
 
+    // User can simply create vending machine with defaults
     public VendingMachine() {
         this.balance = 0.0;
-        this.chips = new VendingItem("Chips", 1.75);
-        this.cookies = new VendingItem("Cookies", 2.00);
-        this. candyBar = new VendingItem("Candy Bar", 2.25);
-        this.gummies =  new VendingItem("Gummies", 2.50);
+        this.item1 = new VendingItem("Chips", 1.75);
+        this.item2 = new VendingItem("Cookies", 2.00);
+        this.item3 = new VendingItem("Candy Bar", 2.25);
+        this.item4 =  new VendingItem("Gummies", 2.50);
     }
 
+    // User can add their own items
+    public VendingMachine(VendingItem item1, VendingItem item2 , VendingItem item3, VendingItem item4) {
+        this.item1 = item1;
+        this.item2 = item2;
+        this.item3 = item3;
+        this.item4 = item4;
+    }
+
+    // Displaying the items in this vending machine instance
     public void displayItems() {
         System.out.println("Available Items \n");
-        System.out.println("1. "+this.chips.getItemName().toUpperCase()+" - $"+this.chips.getItemPrice()+"\n");
-        System.out.println("2. "+this.cookies.getItemName().toUpperCase()+" - $"+this.cookies.getItemPrice()+"\n");
-        System.out.println("3. "+this.candyBar.getItemName().toUpperCase()+" - $"+this.candyBar.getItemPrice()+"\n");
-        System.out.println("4. "+this.gummies.getItemName().toUpperCase()+" - $"+this.gummies.getItemPrice()+"\n");
+        System.out.println("1. "+this.item1.getItemName().toUpperCase()+" - $"+this.item1.getItemPrice()+"\n");
+        System.out.println("2. "+this.item2.getItemName().toUpperCase()+" - $"+this.item2.getItemPrice()+"\n");
+        System.out.println("3. "+this.item3.getItemName().toUpperCase()+" - $"+this.item3.getItemPrice()+"\n");
+        System.out.println("4. "+this.item3.getItemName().toUpperCase()+" - $"+this.item3.getItemPrice()+"\n");
     }
 
     public void purchaseItem(Scanner scnr) {
@@ -40,16 +50,16 @@ public class VendingMachine {
         // Check if the users selection matches an item 
         switch (itemToPurchase) {
             case 1:
-                itemSelected = this.chips;
+                itemSelected = this.item1;
                 break;
             case 2:
-                itemSelected = this.cookies;
+                itemSelected = this.item2;
                 break;
             case 3:
-                itemSelected = this.candyBar;
+                itemSelected = this.item3;
                 break;
             case 4:
-                itemSelected = this.gummies;
+                itemSelected = this.item3;
                 break;
             default:
                 // If not let them know
@@ -75,7 +85,8 @@ public class VendingMachine {
     public double getBalance() {
         return this.balance;
     }
-
+    
+    // Works with menu driven application and houses addsMoney logic
     public void addMoney(Scanner scnr) {
         System.out.println("Please enter a valid dollar amount less then or equal to $10:");
 
@@ -90,6 +101,7 @@ public class VendingMachine {
         }
     }
 
+    // Exits the menu
     public boolean exit(Scanner scnr) {
         scnr.close();
         System.out.println("Goodbye, Enjoy!");

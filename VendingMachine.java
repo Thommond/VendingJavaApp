@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class VendingMachine {
 
@@ -23,18 +24,21 @@ public class VendingMachine {
 
     public void displayItems() {
         System.out.println("Available Items \n");
-        System.out.println("1. Chips - $"+this.chips.getItemPrice()+"\n");
-        System.out.println("2. Cookies - $"+this.cookies.getItemPrice()+"\n");
-        System.out.println("3. Candy Bar - $"+this.candyBar.getItemPrice()+"\n");
-        System.out.println("4. Gummies - $"+this.gummies.getItemPrice()+"\n");
+        System.out.println("1. "+this.chips.getItemName().toUpperCase()+" - $"+this.chips.getItemPrice()+"\n");
+        System.out.println("2. "+this.cookies.getItemName().toUpperCase()+" - $"+this.cookies.getItemPrice()+"\n");
+        System.out.println("3. "+this.candyBar.getItemName().toUpperCase()+" - $"+this.candyBar.getItemPrice()+"\n");
+        System.out.println("4. "+this.gummies.getItemName().toUpperCase()+" - $"+this.gummies.getItemPrice()+"\n");
     }
 
-    public void purchaseItem(int usersChoice) {
+    public void purchaseItem(Scanner scnr) {
+        System.out.println("Choose an option 1-4 for purchase.");
+
+        int itemToPurchase = scnr.nextInt();
 
         VendingItem itemSelected = null;
 
         // Check if the users selection matches an item 
-        switch (usersChoice) {
+        switch (itemToPurchase) {
             case 1:
                 itemSelected = this.chips;
                 break;
@@ -72,7 +76,11 @@ public class VendingMachine {
         return this.balance;
     }
 
-    public void addMoney(double amount) {
+    public void addMoney(Scanner scnr) {
+        System.out.println("Please enter a valid dollar amount less then or equal to $10:");
+
+        double amount = scnr.nextDouble();
+
         if (amount >= 0.0 && amount <= 10.0) {
             this.balance += amount;
             System.out.println("Added $" + amount + " to balance. Current balance $"+ this.balance);
@@ -82,7 +90,8 @@ public class VendingMachine {
         }
     }
 
-    public boolean exit() {
+    public boolean exit(Scanner scnr) {
+        scnr.close();
         System.out.println("Goodbye, Enjoy!");
         return true;
     }

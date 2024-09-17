@@ -48,15 +48,11 @@ public class VendingMachineApp {
               break;
           case 2: 
             // Add funds
-              System.out.println("Please enter a valid dollar amount less then or equal to $10:");
-              moneyToAdd = scnr.nextDouble();
-              thomsVendingMachine.addMoney(moneyToAdd);
+              thomsVendingMachine.addMoney(scnr);
               break;
           case 3: 
             // Purchase Items
-              System.out.println("Choose an option 1-4 for purchase.");
-              int itemChoice = scnr.nextInt();
-              thomsVendingMachine.purchaseItem(itemChoice);
+              thomsVendingMachine.purchaseItem(scnr);
               break;
           case 4:
             // Check Balance
@@ -64,11 +60,11 @@ public class VendingMachineApp {
               break;
           case 5: 
             // Exit the Vending Machine
-              scnr.close();
-              exit = thomsVendingMachine.exit();
+              exit = thomsVendingMachine.exit(scnr);
               break;
           default:
               System.out.println("Remember to select integers 1-5 for a valid menu option.\n");
+              break;
       }
 
    }

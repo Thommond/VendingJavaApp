@@ -16,7 +16,7 @@ public class VendingItem {
 
     // Getter and Setter for itemName
     public String getItemName() {
-        return itemName;
+        return this.itemName;
     }
 
     public void setItemName(String itemName) {
@@ -25,7 +25,7 @@ public class VendingItem {
 
     // Getter and Setter for itemPrice
     public double getItemPrice() {
-        return itemPrice;
+        return this.itemPrice;
     }
 
     public void setItemPrice(double itemPrice) {
